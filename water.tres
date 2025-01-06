@@ -1,0 +1,22 @@
+[gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://dxti38vtai3hl"]
+
+[ext_resource type="Shader" path="res://the sea.gdshader" id="1_6pj3g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rs16t"]
+render_priority = 0
+shader = ExtResource("1_6pj3g")
+shader_parameter/wave_amount = 10
+shader_parameter/base_color = Color(0.01, 0.4, 0.333, 1)
+shader_parameter/specular_intensity = 0.5
+shader_parameter/roughness = 0.1
+shader_parameter/fresnel_intensity = 2.0
+shader_parameter/reflectivity = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/normal_smooth_factor = 0.75
+shader_parameter/tiling_factor = 1.0
+
+[resource]
+material = SubResource("ShaderMaterial_rs16t")
+size = Vector2(128, 128)
+subdivide_width = 512
+subdivide_depth = 512
