@@ -1,6 +1,6 @@
 [gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://dxti38vtai3hl"]
 
-[ext_resource type="Shader" path="res://the sea.gdshader" id="1_6pj3g"]
+[ext_resource type="Shader" path="res://script/the sea.gdshader" id="1_6pj3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rs16t"]
 render_priority = 0

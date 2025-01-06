@@ -1,30 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dekjlmcmk6am7"]
+[gd_scene load_steps=12 format=3 uid="uid://dekjlmcmk6am7"]
 
-[ext_resource type="Texture2D" uid="uid://cta81hg2x6xeg" path="res://cubemap/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_7nomf"]
-[ext_resource type="PlaneMesh" uid="uid://dxti38vtai3hl" path="res://water.tres" id="1_fws7n"]
-[ext_resource type="Shader" path="res://the sea.gdshader" id="4_73yc0"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_153ke"]
-sky_horizon_color = Color(0.69, 0.7985, 1, 1)
-sky_curve = 0.0568394
-sky_energy_multiplier = 0.7
-sky_cover = ExtResource("1_7nomf")
-ground_bottom_color = Color(0, 0.27451, 0.301961, 1)
-ground_horizon_color = Color(0.690196, 0.8, 1, 1)
-ground_curve = 0.0565685
-
-[sub_resource type="Sky" id="Sky_8rl5f"]
-sky_material = SubResource("ProceduralSkyMaterial_153ke")
-radiance_size = 4
-
-[sub_resource type="Environment" id="Environment_1bw4v"]
-background_mode = 2
-sky = SubResource("Sky_8rl5f")
-reflected_light_source = 2
-tonemap_mode = 3
-tonemap_exposure = 1.5
-ssr_enabled = true
-glow_enabled = true
+[ext_resource type="Texture2D" uid="uid://cta81hg2x6xeg" path="res://resources/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_7nomf"]
+[ext_resource type="PlaneMesh" uid="uid://dxti38vtai3hl" path="res://resources/water.tres" id="1_fws7n"]
+[ext_resource type="Shader" path="res://script/the sea.gdshader" id="4_73yc0"]
+[ext_resource type="Script" path="res://script/FPS_Counter.gd" id="4_lavdi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rs16t"]
 render_priority = 0
@@ -57,38 +36,69 @@ size = Vector2(512, 1024)
 subdivide_width = 128
 subdivide_depth = 256
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_153ke"]
+sky_horizon_color = Color(0.69, 0.7985, 1, 1)
+sky_curve = 0.0568394
+sky_energy_multiplier = 0.7
+sky_cover = ExtResource("1_7nomf")
+ground_bottom_color = Color(0, 0.27451, 0.301961, 1)
+ground_horizon_color = Color(0.690196, 0.8, 1, 1)
+ground_curve = 0.0565685
+
+[sub_resource type="Sky" id="Sky_8rl5f"]
+sky_material = SubResource("ProceduralSkyMaterial_153ke")
+radiance_size = 4
+
+[sub_resource type="Environment" id="Environment_1bw4v"]
+background_mode = 2
+sky = SubResource("Sky_8rl5f")
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 1.5
+ssr_enabled = true
+glow_enabled = true
+
 [node name="Node3D" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1bw4v")
+[node name="Sea" type="Node3D" parent="."]
 
-[node name="seaCam" type="MeshInstance3D" parent="."]
+[node name="seaCam" type="MeshInstance3D" parent="Sea"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = ExtResource("1_fws7n")
 skeleton = NodePath("")
 
-[node name="seaCamL" type="MeshInstance3D" parent="."]
+[node name="seaCamL" type="MeshInstance3D" parent="Sea"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -128, 0, 0)
 mesh = SubResource("PlaneMesh_llk3b")
 skeleton = NodePath("")
 
-[node name="seaCamR" type="MeshInstance3D" parent="."]
+[node name="seaCamR" type="MeshInstance3D" parent="Sea"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 128, 0, 0)
 mesh = SubResource("PlaneMesh_llk3b")
 skeleton = NodePath("")
 
-[node name="sea2" type="MeshInstance3D" parent="."]
+[node name="sea2" type="MeshInstance3D" parent="Sea"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, -128)
 mesh = SubResource("PlaneMesh_k7gkv")
 skeleton = NodePath("")
 
-[node name="sea3" type="MeshInstance3D" parent="."]
+[node name="sea3" type="MeshInstance3D" parent="Sea"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, -704)
 mesh = SubResource("PlaneMesh_kv27r")
 skeleton = NodePath("")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bw4v")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.08, 56)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.965926, -0.105684, 0.236259, 0, 0.912834, 0.40833, -0.258819, 0.394417, -0.88173, 0, 20.1968, -14.4921)
+
+[node name="FPS Counter" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+script = ExtResource("4_lavdi")
