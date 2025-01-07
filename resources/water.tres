@@ -5,14 +5,17 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rs16t"]
 render_priority = 0
 shader = ExtResource("1_6pj3g")
-shader_parameter/wave_amount = 8
-shader_parameter/base_color = Color(0.01, 0.4, 0.333, 1)
-shader_parameter/roughness = 0.1
+shader_parameter/wave_amount = 128
+shader_parameter/base_color = Color(0.0121603, 0.443041, 0.369693, 1)
+shader_parameter/roughness = 0.11
 shader_parameter/metallic = 1.0
+shader_parameter/persistence = 0.86
+shader_parameter/lacunarity = 1.115
+shader_parameter/normal_smooth_amount = 0.4
 shader_parameter/tiling_factor = 1.0
 
 [resource]
 material = SubResource("ShaderMaterial_rs16t")
 size = Vector2(128, 128)
-subdivide_width = 256
-subdivide_depth = 256
+subdivide_width = 128
+subdivide_depth = 128

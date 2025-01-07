@@ -22,7 +22,9 @@ background_mode = 2
 sky = SubResource("Sky_8rl5f")
 tonemap_mode = 3
 tonemap_exposure = 1.5
+ssr_depth_tolerance = 128.0
 glow_enabled = true
+fog_sky_affect = 0.0
 
 [node name="Node3D" type="Node3D"]
 
@@ -33,11 +35,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("1_fws7n")
 skeleton = NodePath("")
 
+[node name="Camera3D" type="Camera3D" parent="Sea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.88, 64.46)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bw4v")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.08, 56)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.965926, -0.105684, 0.236259, 0, 0.912834, 0.40833, -0.258819, 0.394417, -0.88173, 0, 20.1968, -14.4921)
