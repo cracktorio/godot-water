@@ -14,7 +14,3 @@ config/name="the fucking SEA"
 run/main_scene="res://the sea.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
-
-[display]
-
-window/vsync/vsync_mode=0
